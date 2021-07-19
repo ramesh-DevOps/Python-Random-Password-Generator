@@ -1,0 +1,17 @@
+pipeline {
+    agent any    
+    stages {
+        stage('git clone') {
+            steps {
+              git branch: 'master', url: "https://github.com/sectool/Python-Random-Password-Generator.git"  
+              sh "ls -ll"
+            }
+        }
+        
+        stage('Generate Password') {
+            steps {
+              sh "python3 run.py" 
+            }
+        }
+    }
+}
